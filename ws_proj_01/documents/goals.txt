@@ -1,0 +1,19 @@
+< Goals >
+
+1. Understanding the concept of Websocket
+
+2. Keywords that I searched
+    Django channels
+    Chat Protocol
+    Channels + WebSockets
+    two way communication
+    establish a connection
+    open connection between client and server
+    ASGI
+
+
+3. Task
+    3.1 Configure ASGI
+    3.2 Consumers
+    3.3 Routing
+    3.4 WebSocket

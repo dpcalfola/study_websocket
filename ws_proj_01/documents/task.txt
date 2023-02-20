@@ -1,0 +1,35 @@
+1. Set python interpreter
+    1.1 Virtual environment
+        1.1.1 name "venv_ws"
+
+2. pip package
+    2.1 Make requirements.txt
+        1.1.1 Add Django
+        1.1.2 Add python-dotenv>=0.21.0,<0.22.0 (for .env file)
+    2.2 Install packages from requirements.txt
+        1.2.1 "pip install -r requirements.txt"
+
+3. Start project
+    3.1 Start Django project
+        3.1.1 "django-admin startproject config ."
+    3.2 Run Server
+        3.2.1 "python manage.py runserver" -> Confirm that the server is running
+
+4. Hide Env data
+    4.1 Install package "python-dotenv"
+    4.2 Make .env file in config directory
+    4.3 Set code on Settings.py
+        4.3.1 Load package, load_dotenv(), os.environ.get('VARIABLE')
+
+5. Start app "chat"
+    5.1 "python manage.py startapp chat"
+    5.2 Add "chat" into INSTALLED_APPS on settings.py
+    5.3 mkdir "chat/templates/chat"
+        5.3.1 Make lobby.html in "chat/templates/chat"
+    5.4 View function
+        5.4.1 Make view function in "chat/views.py"
+        5.4.2 render(request, 'chat/lobby.html')
+    5.5 Url routing -> Routing chat app to root path (/)
+        5.5.1 Make file url.py in "chat"
+        5.5.2 Add path('', views.lobby, name='lobby') in "chat/urls.py"
+        5.5.3 Add path('', include('chat.urls')) in "config/urls.py"
