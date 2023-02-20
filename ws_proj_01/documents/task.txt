@@ -1,0 +1,15 @@
+1. Set python interpreter
+    1.1 Virtual environment
+        1.1.1 name "venv_ws"
+
+2. pip package
+    2.1 Make requirements.txt
+        1.1.1 Add Django
+    2.2 Install packages from requirements.txt
+        1.2.1 "pip install -r requirements.txt"
+
+3. Start project
+    3.1 Start Django project
+        3.1.1 "django-admin startproject config ."
+    3.2 Run Server
+        3.2.1 "python manage.py runserver" -> Confirm that the server is running
