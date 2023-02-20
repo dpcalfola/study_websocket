@@ -5,6 +5,7 @@
 2. pip package
     2.1 Make requirements.txt
         1.1.1 Add Django
+        1.1.2 Add python-dotenv>=0.21.0,<0.22.0 (for .env file) <-
     2.2 Install packages from requirements.txt
         1.2.1 "pip install -r requirements.txt"
 
@@ -13,3 +14,9 @@
         3.1.1 "django-admin startproject config ."
     3.2 Run Server
         3.2.1 "python manage.py runserver" -> Confirm that the server is running
+
+4. Hide Env data
+    4.1 Install package "python-dotenv"
+    4.2 Make .env file in config directory
+    4.3 Set code on Settings.py
+        4.3.1 Load package, load_dotenv(), os.environ.get('VARIABLE')
