@@ -1,0 +1,8 @@
+< About ASGI >
+
+ASGI = Asynchronous Server Gateway Interface
+
+- Python standard asynchronous web framework interface
+- Used by Django, Flask, etc
+- It makes that WSGI(Web Server Gateway Interface) can be used in asynchronous way
+- Supports WebSocket, Server-sent event, Long polling, etc
