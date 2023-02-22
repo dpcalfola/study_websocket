@@ -9,17 +9,37 @@
 </head>
 <body>
 <h1>This is Lobby</h1>
+
+<form id="form">
+    <input type="text" name="message">
+</form>
+
 <script type="text/javascript">
     // ws://${window.location.host}/ <== This means app routing url (this project - root)
     // /ws/socket-server/ <== for websocket connecting url (under chat app)
     let url = `ws://${window.location.host}/ws/socket-server/`;
 
-    const chatSocket = new WebSocket(url);
+    // Create WebSocket connection
+    const chatSocket = new WebSocket(url)
 
+    // Connection opened
     chatSocket.onmessage = function (e) {
         let data = JSON.parse(e.data)
         console.log('Data: ', data)
     }
+
+    // Listen for messages
+    let form = document.getElementById('form');
+
+    // Send message
+    form.addEventListener('submit', (e) => {
+        e.preventDefault()
+        let message = e.target.message.value
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }))
+        form.reset()
+    })
 
 </script>
 </body>
