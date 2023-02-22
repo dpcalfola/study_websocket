@@ -32,3 +32,9 @@ class ChatConsumer(WebsocketConsumer):
 
         # Print the received message to the console
         print(message)
+
+        # Send the message back to the client
+        self.send(text_data=json.dumps({
+            'type': 'chat',
+            'message': message,
+        }))

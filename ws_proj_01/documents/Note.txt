@@ -6,3 +6,46 @@ ASGI = Asynchronous Server Gateway Interface
 - Used by Django, Flask, etc
 - It makes that WSGI(Web Server Gateway Interface) can be used in asynchronous way
 - Supports WebSocket, Server-sent event, Long polling, etc
+
+
+
+
+
+
+< Channel layer >
+
+-
+Channel layer is a low level component
+that provides a way to communicate between different processes or threads
+within an application, particularly over WebSocket connections
+
+-
+It acts as a messaging layer
+that allow s different parts of your application to communicate with each other
+ASYNCHRONOUSLY, in real time
+
+-
+It allows you to write Python code that runs on the server side
+and interact with clients connected through WebSockets connection
+
+-
+Two components of channel layer
+1. A Backend that handles the message passing between processes or threads.
+2. A set of middleware components that provide features
+    such as authentication, session handling, and routing
+
+
+-
+The channel layer is a powerful tool that provides a way
+to handle WevSocket connections in Django
+
+
+< How to use channel layer >
+
+-
+Channel layer provides groups and channels
+
+-
+Channel group store information about users in a room
+that will be stored inside of an in-memory database
+

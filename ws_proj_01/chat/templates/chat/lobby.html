@@ -14,6 +14,8 @@
     <input type="text" name="message">
 </form>
 
+<div id="message"></div>
+
 <script type="text/javascript">
     // ws://${window.location.host}/ <== This means app routing url (this project - root)
     // /ws/socket-server/ <== for websocket connecting url (under chat app)
@@ -22,10 +24,21 @@
     // Create WebSocket connection
     const chatSocket = new WebSocket(url)
 
-    // Connection opened
+    // On Message
     chatSocket.onmessage = function (e) {
+        // console.log('Message from server: ', e.data)
         let data = JSON.parse(e.data)
         console.log('Data: ', data)
+
+        // Check type of message and insert into html
+        if (data.type === 'chat') {
+            let message = document.getElementById('message')
+            message.insertAdjacentHTML('beforeend',
+                `<div>
+                    <p>${data.message}</p>
+                </div>`
+            )
+        }
     }
 
     // Listen for messages
@@ -33,11 +46,14 @@
 
     // Send message
     form.addEventListener('submit', (e) => {
+        // Prevent form from submitting
         e.preventDefault()
+        // Get message and send to server
         let message = e.target.message.value
         chatSocket.send(JSON.stringify({
             'message': message
         }))
+        // Reset form
         form.reset()
     })
 
