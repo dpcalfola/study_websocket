@@ -8,10 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-<h1>This is Lobby</h1>
+<h1>Simple WebSocket Chat Room</h1>
 
 <form id="form">
-    <input type="text" name="message">
+    <label>
+        <input type="text" name="message">
+    </label>
 </form>
 
 <div id="message"></div>
@@ -33,10 +35,10 @@
         // Check type of message and insert into html
         if (data.type === 'chat') {
             let message = document.getElementById('message')
-            message.insertAdjacentHTML('beforeend',
-                `<div>
-                    <p>${data.message}</p>
-                </div>`
+            // Insert message into html
+            message.insertAdjacentHTML('afterbegin',`<div>
+                                                        <p>${data.message}</p>
+                                                    </div>`
             )
         }
     }
