@@ -8,18 +8,56 @@
     <title>Document</title>
 </head>
 <body>
-<h1>This is Lobby</h1>
+<h1>Simple WebSocket Chat Room</h1>
+
+<form id="form">
+    <label>
+        <input type="text" name="message">
+    </label>
+</form>
+
+<div id="message"></div>
+
 <script type="text/javascript">
     // ws://${window.location.host}/ <== This means app routing url (this project - root)
     // /ws/socket-server/ <== for websocket connecting url (under chat app)
     let url = `ws://${window.location.host}/ws/socket-server/`;
 
-    const chatSocket = new WebSocket(url);
+    // Create WebSocket connection
+    const chatSocket = new WebSocket(url)
 
+    // On Message
     chatSocket.onmessage = function (e) {
+        // console.log('Message from server: ', e.data)
         let data = JSON.parse(e.data)
         console.log('Data: ', data)
+
+        // Check type of message and insert into html
+        if (data.type === 'chat') {
+            let message = document.getElementById('message')
+            // Insert message into html
+            message.insertAdjacentHTML('afterbegin',`<div>
+                                                        <p>${data.message}</p>
+                                                    </div>`
+            )
+        }
     }
+
+    // Listen for messages
+    let form = document.getElementById('form');
+
+    // Send message
+    form.addEventListener('submit', (e) => {
+        // Prevent form from submitting
+        e.preventDefault()
+        // Get message and send to server
+        let message = e.target.message.value
+        chatSocket.send(JSON.stringify({
+            'message': message
+        }))
+        // Reset form
+        form.reset()
+    })
 
 </script>
 </body>
