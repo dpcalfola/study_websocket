@@ -1,3 +1,35 @@
+# WebSocket Study - Simple Chat Room
+
+<br>
+
+### 1. Introduction
+   
+   장고의 채널과 웹소켓 통신을 이용하여 간단한 채팅 기능을 구형하였습니다.<br>
+   유투브 영상을 따라가며 코드를 이해하고 구현하는 과정을 기록하였으며,<br>
+   해당 기록은 아래 4번에서 확인 할 수 있습니다.
+   
+
+<br>
+<br>
+
+### 2. Reference 
+
+[Django Channels & WebSockets Oversimplified](https://www.youtube.com/watch?v=cw8-KFVXpTE)
+
+<br>
+<br>
+
+### 3. Result
+ 
+<img src="documents/image/result.png" style="width: 50%; height: auto;">
+
+
+<br>
+<br>
+
+### 4. Development Process History
+
+```text
 1. Set python interpreter
     1.1 Virtual environment
         1.1.1 name "venv_ws"
@@ -111,7 +143,7 @@ From here, What's happened ?
 ***********************************************************************
 
 
-11. WebSocket 1 -
+11. WebSocket 1 - Get the message from received data
     11.0 Goal:
         Sending a message from the client to the server
         and printing the received data on the Python console
@@ -141,7 +173,7 @@ From here, What's happened ?
     12.3 PROBLEM: The message is only shown on the client who sent the message
 
 
-13.
+13. Show the message on all clients
     13.1 On Setting.py
         13.1.1 CHANNEL_LAYER = {...}
     13.2 On chat/consumers.py
@@ -165,3 +197,5 @@ From here, What's happened ?
     14.6 Server chat_message() sends the text data to all clients in group
     14.7 Client(s) get the text data
     14.8 Client(s) render a message from the data on HTML
+```
+  
