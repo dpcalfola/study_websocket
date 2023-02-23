@@ -1,4 +1,4 @@
-# WebSocket Study - Simple Chat Room
+# WebSocket Study 01 - Simple Chat Room
 
 <br>
 
